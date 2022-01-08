@@ -50,7 +50,7 @@ class AuthController {
         const isValid = otpService.verifyOTP(hashedOTP, data)
 
         if (!isValid) {
-            res.status(401).json({ err: 'invalid OTP!' })
+            return res.status(401).json({ err: 'invalid OTP!' })
         }
 
         let user;
