@@ -3,6 +3,8 @@
 
 class UserDto {
     _id;
+    name;
+    avatar;
     phone;
     activated;
     createdAt;
@@ -12,6 +14,8 @@ class UserDto {
         this.phone = user.phone;
         this.createdAt = user.createdAt;
         this.activated = user.activated;
+        this.name = user.name;
+        this.avatar = user.avatar ? `${process.env.BASE_URL}${user.avatar}`: null;
     }
 
 }

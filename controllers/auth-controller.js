@@ -66,7 +66,7 @@ class AuthController {
             return res.status(500).json({ err: 'Something went wrong!' })
         }
 
-        const { accessToken, refreshToken } = tokenService.generateTokens({ _id: user._id });
+        const { accessToken, refreshToken } = tokenService.generateTokens({ _id: user._id, activated: false });
 
         await tokenService.storeRefreshToken(refreshToken, user._id)
         res.cookie('refreshToken', { refreshToken }, {
@@ -78,7 +78,7 @@ class AuthController {
             maxAge: 1000 * 60 * 60 * 24 * 30,
             httpOnly: true
         })
-        
+
         const userDto = new UserDto(user)
         return res.json({ user: userDto, auth: true })
     }
