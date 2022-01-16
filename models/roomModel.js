@@ -11,7 +11,7 @@ const roomSchema = new mongoose.Schema({
     },
     ownerId: {
         type: mongoose.Types.ObjectId,
-        ref: 'user',
+        ref: 'users',
         unique: false
     },
     speakers: {

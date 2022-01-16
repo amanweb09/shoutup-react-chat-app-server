@@ -18,8 +18,15 @@ class RoomsController {
         })
 
         return res
-        .status(201)
-        .json(new RoomDto(room))
+            .status(201)
+            .json(new RoomDto(room))
+    }
+    async index(req, res) {
+        const rooms = await roomService.getAllRooms(['open'])
+
+        return res
+            .status(200)
+            .json(rooms)
     }
 }
 

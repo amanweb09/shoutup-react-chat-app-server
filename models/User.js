@@ -7,7 +7,10 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        required: false
+        required: false,
+        get: (avatar) => {
+            `${process.env.BASE_URL}${avatar}`
+        }
     },
     phone: {
         type: String,
@@ -18,7 +21,7 @@ const userSchema = new mongoose.Schema({
         required: false,
         default: false
     }
-}, { timestamps: true })
+}, { timestamps: true, toJSON: { getters: true } })
 
 const User = new mongoose.model('users', userSchema);
 

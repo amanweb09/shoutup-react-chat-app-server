@@ -12,5 +12,6 @@ router.post('/activate', authMiddleware, activateController.activate)
 router.get('/refresh', authController.refresh)
 router.post('/logout', authMiddleware, authController.logout)
 router.post('/rooms', authMiddleware, roomsController.create)
+router.get('/rooms', authMiddleware, roomsController.index)
 
 module.exports = router
